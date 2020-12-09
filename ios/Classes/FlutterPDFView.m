@@ -75,6 +75,9 @@
             if (document == nil) {
                 [_channel invokeMethod:@"onError" arguments:@{@"error" : @"cannot create document: File not in PDF format or corrupted."}];
             } else {
+                [(_pdfView.subviews[0] as! UIScrollView) setShowsVerticalScrollIndicator:NO];
+                [(_pdfView.subviews[0] as! UIScrollView) setShowsHorizontalScrollIndicator:NO];
+
                 _pdfView.autoresizesSubviews = YES;
                 _pdfView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
                 
