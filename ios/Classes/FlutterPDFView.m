@@ -127,6 +127,9 @@
             if (@available(iOS 13.0, *)) {
                 _scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
             }
+            
+            [_scrollView setShowsHorizontalScrollIndicator:NO];
+            [_scrollView setShowsVerticalScrollIndicator:NO];
         }
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePageChanged:) name:PDFViewPageChangedNotification object:_pdfView];
