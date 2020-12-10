@@ -22,10 +22,10 @@
 - (NSObject<FlutterPlatformView>*)createWithFrame:(CGRect)frame
                                    viewIdentifier:(int64_t)viewId
                                         arguments:(id _Nullable)args {
-    FLTPDFViewController* pdfviewController = [[FLTPDFViewController alloc] initWithFrame:frame
+    FLTPDFViewController* pdfviewController = [[FLTPDFViewController alloc] :frame
                                                                            viewIdentifier:viewId
                                                                                 arguments:args
-                                                                          binaryMessenger:_messenger];
+                                                                          binaryMessinitWithFrameenger:_messenger];
     return pdfviewController;
 }
 
@@ -75,13 +75,13 @@
             if (document == nil) {
                 [_channel invokeMethod:@"onError" arguments:@{@"error" : @"cannot create document: File not in PDF format or corrupted."}];
             } else {
-                [(_pdfView.subviews[0] as! UIScrollView) setShowsVerticalScrollIndicator:NO];
-                [(_pdfView.subviews[0] as! UIScrollView) setShowsHorizontalScrollIndicator:NO];
+                [_pdfView.subviews[0] setShowsVerticalScrollIndicator:NO];
+                [_pdfView.subviews[0] setShowsHorizontalScrollIndicator:NO];
 
                 _pdfView.autoresizesSubviews = YES;
                 _pdfView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
                 
-                _pdfView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+                _pdfView.backgroundColor = [UIColor blackColor];
                 BOOL swipeHorizontal = [args[@"swipeHorizontal"] boolValue];
                 if (swipeHorizontal) {
                     _pdfView.displayDirection = kPDFDisplayDirectionHorizontal;
